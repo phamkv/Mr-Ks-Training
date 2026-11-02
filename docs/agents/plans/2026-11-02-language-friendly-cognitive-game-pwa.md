@@ -344,7 +344,7 @@ Deliver an installed, offline, multi-language app with the speed game saving res
 - [x] Add `Home` as today's pass to start, finish and save a speed round, ending the round after the current trial once 5 minutes have passed
 - [x] Add a `Settings` screen with language and an About section showing the app version, whether storage is persistent and the last measured frame interval
 - [x] Add a build-only `VITE_E2E` flag that shortens rounds and exposes the correct answer through a data attribute
-- [-] Deploy to Vercel Hobby with the user's account using the Keychain token described under Accounts and access and the default `*.vercel.app` domain
+- [x] Deploy to Vercel Hobby with the user's account using the Keychain token described under Accounts and access and the default `*.vercel.app` domain
 
 **Automated Verification**:
 - [x] `npm run typecheck` passes, including that `de.ts` and `vi.ts` have every key in `en.ts`
@@ -415,7 +415,7 @@ Dependencies: Phase 2
 Back up results to Neon, make restoring possible and provide the private read-only view.
 
 **Tasks**:
-- [ ] Add the connection string from `.env.local` to the Vercel project as `DATABASE_URL` with `vercel env add`, without printing it
+- [x] Add the connection string from `.env.local` to the Vercel project as `DATABASE_URL` with `vercel env add`, without printing it
 - [x] Add `server/schema.sql` and `npm run db:migrate`
   ```sql
   create table if not exists profiles (
@@ -458,7 +458,7 @@ Back up results to Neon, make restoring possible and provide the private read-on
 - [x] Add `src/core/mergeState.ts` with the game state and settings rules from decision 14
 - [x] Add `api/index.ts` as a single fetch handler that calls `server/routes.ts`, with the `/api/:path*` rewrite in `vercel.json`
 - [x] Add `scripts/dev-api.ts` and a Vite proxy so `npm run dev` and e2e tests reach the API on PGlite
-- [ ] Apply `server/schema.sql` to production by running `npm run db:migrate` with `DATABASE_URL_UNPOOLED` from `.env.local`
+- [x] Apply `server/schema.sql` to production by running `npm run db:migrate` with `DATABASE_URL_UNPOOLED` from `.env.local`
 - [x] Add `src/sync/identity.ts`: create the recovery code and view token with `crypto.getRandomValues`, display the code in groups of 4 base32 characters, and hash with `crypto.subtle`. Existing Phase 1 and 2 installs create these on first launch after updating
 - [x] Register the profile with `POST /api/profiles` after her first finished round, not on launch, and retry until it succeeds. Results stay unsynced until then
 - [x] Add `src/sync/client.ts`: `syncNow` on app open, after each round and on the `online` event, in batches of up to 100 oldest-first, with backoff retries while the app is open. Do not rely on background sync
@@ -550,9 +550,10 @@ During implementation, document user feedback, problems, and decisions here.
   - The week shows in words rather than dots, and the bundled Be Vietnam Pro font replaces the system font stack.
   - Each game has a "Leave this game" button that explains what will happen before anything is lost.
 - `server/dbPglite.ts` holds the PGlite adapter rather than `server/db.ts`, so the deployed function never bundles the Postgres WASM build.
-- `server/` and `api/` import with `.js` extensions, because Vercel's runtime compiles each file separately under `"type": "module"`. This hasn't been confirmed on a real deployment yet.
+- `server/` and `api/` import with `.js` extensions, because Vercel's runtime compiles each file separately under `"type": "module"`. Confirmed working on the live deployment.
 - The German and Vietnamese app text is a draft and needs a native speaker's review.
-- Production steps are on hold until the user decides how to run them: the Vercel deploy was blocked by the permission check on 2026-11-02, and the related `vercel env add` and production `db:migrate` steps haven't been attempted.
+- Deployed to https://pcogni.vercel.app on 2026-11-02 after the user allowed the production steps. A live check with a temporary profile passed for sync, duplicates, restore, the private view and token separation, and the profile was then deleted.
+- `vercel link` appends a `VERCEL_OIDC_TOKEN` line to `.env.local`, which is gitignored and doesn't affect the database variables.
 - `@typescript-eslint` currently declares TypeScript below 6.1, so no ESLint is planned. Type-checking and tests provide the static checks.
 
 ## References
