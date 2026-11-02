@@ -1,0 +1,35 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Boarding Pass</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:440px;height:956px;overflow:hidden;background:#0E1B2C;color:#fff;font-family:"Be Vietnam Pro",sans-serif;padding:68px 20px 40px;display:flex;flex-direction:column;font-variant-numeric:tabular-nums}
+header{display:flex;justify-content:space-between;align-items:center;min-height:64px;padding:0 4px}
+h1{font-size:32px;font-weight:800}
+.gear{width:64px;height:64px;border-radius:50%;border:3px solid #fff;display:grid;place-items:center}
+.pass{margin-top:22px;background:#fff;color:#0E1B2C;border-radius:20px;overflow:hidden;flex:1;display:flex;flex-direction:column}
+.head{padding:20px 22px 14px;display:flex;justify-content:space-between;align-items:baseline;font-size:25px;font-weight:800}
+.head span{font-weight:500;font-size:23px}
+.leg{display:flex;align-items:center;gap:16px;padding:0 22px;min-height:138px;border-top:3px solid #0E1B2C}
+.leg .n{font-size:52px;font-weight:800;width:44px;line-height:1}
+.leg .w{font-size:31px;font-weight:700;line-height:1.15}
+.leg .t{font-size:23px;font-weight:500}
+.leg.now{background:#FFB000}
+.tear{margin-top:auto;border-top:5px dashed #0E1B2C;position:relative}
+.tear::before,.tear::after{content:"";position:absolute;top:-17px;width:30px;height:30px;border-radius:50%;background:#0E1B2C}
+.tear::before{left:-15px}.tear::after{right:-15px}
+.stub{padding:20px 22px 22px}
+.start{height:118px;border-radius:14px;background:#0E1B2C;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px}
+.start b{font-size:46px;font-weight:800}
+.week{margin-top:20px;font-size:24px;font-weight:700;line-height:1.35;padding:0 4px}
+</style></head><body>
+<header><h1>Chào buổi sáng</h1><div class="gear" aria-label="Cài đặt"><svg width="34" height="34" viewBox="0 0 24 24" fill="#fff"><path d="M4 7h16v2.600H4zM4 14.400h16V17H4z"/><circle cx="9" cy="8.300" r="3"/><circle cx="16" cy="15.700" r="3"/></svg></div></header>
+<main class="pass">
+<div class="head">Bài hôm nay <span>thứ Hai, 2/11</span></div>
+<div class="leg now"><div class="n">1</div><div><div class="w">Tốc độ</div><div class="t">5 phút · bây giờ</div></div></div>
+<div class="leg"><div class="n">2</div><div><div class="w">Nhớ ô vuông</div><div class="t">2,5 phút</div></div></div>
+<div class="leg"><div class="n">3</div><div><div class="w">Mũi tên</div><div class="t">2,5 phút</div></div></div>
+<div class="tear"></div>
+<div class="stub"><div class="start" role="button"><b>Bắt đầu</b><svg width="60" height="60" viewBox="0 0 48 48" fill="#FFB000"><path d="M44 24 28 8v10H4v12h24v10z"/></svg></div></div>
+</main>
+<div class="week">3 trên 5 ngày · 32 phút</div>
+</body></html>

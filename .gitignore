@@ -2,3 +2,11 @@
 .env.local
 .DS_Store
 .claude/skills/.DS_Store
+node_modules
+dist
+dist-e2e
+.vercel
+.env*
+test-results
+playwright-report
+.impeccable/review

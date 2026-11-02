@@ -1,0 +1,10 @@
+.env*
+.neon
+.claude
+.impeccable
+docs
+tests
+test-results
+playwright-report
+dist-e2e
+PRODUCT.md

@@ -7,7 +7,7 @@ tags: [plan, pwa, ios, vercel, neon, cognitive-games, speed-of-processing, i18n]
 status: draft
 ---
 
-# PLAN: Cognitive game PWA for one older player
+# PLAN: Mr. K's Training, a cognitive game PWA for one older player
 
 Build a small installable web game for the user's mum, played daily on an iPhone 17 Pro Max (newest iOS) and also usable in a normal browser. Each session lasts about 10 minutes: a speed-of-processing game modelled on the ACTIVE trial's task, then 2 rotating games. Progress is saved on the phone, backed up to a free database, and visible to the user through a private read-only link.
 
@@ -118,7 +118,7 @@ Never print, log or commit the Vercel token or the Neon connection strings. Pass
  iPhone (Home Screen PWA)                         Vercel Hobby
 ┌────────────────────────────────────┐           ┌───────────────────────────┐
 │ React screens                      │           │ Static files (CDN)        │
-│  Home ▶ Set ▶ Game ▶ Round summary │           │                           │
+│  Pass ▶ Game ▶ Pass ▶ Game ▶ Pass  │           │                           │
 │                                    │  HTTPS    │ api/index.ts (one handler)│
 │                                    │           │  POST /api/profiles       │
 │                                    │           │  DELETE /api/profiles     │
@@ -251,7 +251,7 @@ No existing code to reuse. New abstractions:
 - `src/i18n/` - `t()`, `en.ts` (source of keys), `de.ts`, `vi.ts`
 - `src/games/<id>/` - one folder per game: `index.ts` module, game component, demo, its strings in 3 languages, tests
 - `src/games/oddOneOut/words/{de,en,vi}.json` - word sets
-- `src/screens/` - `Home`, `SetRunner`, `RoundSummary`, `Settings`, `InstallHelp`, `LanguagePick`, `Restore`, `PrivateView`
+- `src/screens/` - `Home`, `SetRunner`, `Settings`, `InstallHelp`, `LanguagePick`, `Restore`, `PrivateView`
 - `src/sync/` - `identity.ts` (codes and hashes), `client.ts` (`syncNow`, `restoreFromCode`, `replaceViewLink`)
 - `api/index.ts` - the only function: fetch handler that routes to `server/routes.ts`
 - `server/`
@@ -315,50 +315,50 @@ Dependencies: None
 Deliver an installed, offline, multi-language app with the speed game saving results locally. She can start playing from here, and those results will be backed up in Phase 3.
 
 **Tasks**:
-- [ ] Run `git init` and confirm `.gitignore` (created by `neon init`) covers `node_modules`, `dist`, `.vercel`, `.env*` and `.neon`, adding any that are missing, before anything is committed
-- [ ] Create `package.json` with exact versions of Vite, React, TypeScript, `vite-plugin-pwa`, Dexie, Vitest and Playwright, plus `engines.node: "26.x"` and the scripts `dev`, `build`, `typecheck`, `test` and `test:e2e`
-- [ ] Pin a lower TypeScript version if TypeScript 7 fails with any dependency, and record the reason in Implementation Notes
-- [ ] Create `vite.config.ts` with a manifest (`display: standalone`, `orientation: portrait`, `start_url: /`, icons including `apple-touch-icon`) and precaching of all app files
-- [ ] Use the plugin's prompt-style update flow so a new version only applies from the home screen, never during a game
-- [ ] Create `vercel.json` with the SPA rewrite and headers: `Referrer-Policy: no-referrer`, `X-Content-Type-Options: nosniff`, `X-Robots-Tag: noindex`, and a same-origin `Content-Security-Policy`
-- [ ] Add `src/styles` tokens: body text at least 20 px, tap targets at least 60 px, high contrast, `touch-action: manipulation`, safe-area insets, system font stack (which must render Vietnamese diacritics), and disabled text selection during games
-- [ ] Add `src/i18n` with `t()` and German, English and Vietnamese strings, plus `LanguagePick` on first launch, preselected from `navigator.language`
-- [ ] Add `src/storage/db.ts` with the Dexie schema and request `navigator.storage.persist()` on first launch
-- [ ] Add `InstallHelp`: in a browser tab on iOS, show illustrated Add to Home Screen steps and explain that progress stays separate, with a "Continue in browser" option
-- [ ] Add `src/core/staircase.ts`
+- [x] Confirm the existing git repository's `.gitignore` (created by `neon init`) covers `node_modules`, `dist`, `.vercel`, `.env*` and `.neon`, adding any that are missing, before anything is committed
+- [x] Create `package.json` with exact versions of Vite, React, TypeScript, `vite-plugin-pwa`, Dexie, Vitest and Playwright, plus `engines.node: "26.x"` and the scripts `dev`, `build`, `typecheck`, `test` and `test:e2e`
+- [x] Pin a lower TypeScript version if TypeScript 7 fails with any dependency, and record the reason in Implementation Notes
+- [x] Create `vite.config.ts` with a manifest (`display: standalone`, `orientation: portrait`, `start_url: /`, icons including `apple-touch-icon`) and precaching of all app files
+- [x] Use the plugin's prompt-style update flow so a new version only applies from the home screen, never during a game
+- [x] Create `vercel.json` with the SPA rewrite and headers: `Referrer-Policy: no-referrer`, `X-Content-Type-Options: nosniff`, `X-Robots-Tag: noindex`, and a same-origin `Content-Security-Policy`
+- [x] Add `src/styles` tokens: body text at least 20 px, tap targets at least 60 px, high contrast, `touch-action: manipulation`, safe-area insets, the bundled Be Vietnam Pro font served from the app so it works offline (must render Vietnamese diacritics), and disabled text selection during games
+- [x] Add `src/i18n` with `t()` and German, English and Vietnamese strings, plus `LanguagePick` on first launch, preselected from `navigator.language`
+- [x] Add `src/storage/db.ts` with the Dexie schema and request `navigator.storage.persist()` on first launch
+- [x] Add `InstallHelp`: in a browser tab on iOS, show illustrated Add to Home Screen steps and explain that progress stays separate, with a "Continue in browser" option
+- [x] Add `src/core/staircase.ts`
   ```ts
   // 3 correct in a row: level + 1 (harder). 1 wrong: level - 1 (easier).
   // Levels run easiest to hardest, and state stores the level value.
   // Reversal = direction change. score = mean of last 6 reversal values,
   // falling back to the current value with fewer than 6.
   ```
-- [ ] Add `measureFrameInterval` to `src/core/timing/flash.ts`: median rAF delta over 30 frames at round start
-- [ ] Add `presentFlash` to `src/core/timing/flash.ts`: show a preloaded stimulus on one rAF, hide it on the first frame where elapsed time is at least requested minus half a frame, and return the actual duration and frame count
-- [ ] Add `src/games/speed` with the `GameModule` interface, using levels 500, 400, 320, 250, 200, 160, 125, 100, 80, 65, 50, 34 and 17 ms, rounded at runtime to whole measured frames, with duplicates removed. At round start, map the saved flash length to the nearest available level
-- [ ] Implement the speed trial as focus 500 ms, flash, mask 300 ms, centre question and outer position question, with both answers required for a correct trial and a clear ✓ or ✗ shape as feedback
-- [ ] Implement stages: stage 1 has no distractors. Stage 2 adds triangles around the outer positions and starts after 2 consecutive rounds with a threshold of 80 ms or less, resetting to 250 ms
-- [ ] Discard and do not score a trial if its actual duration differs from the request by more than 1 frame, or if the page was hidden. Pause the round clock on `visibilitychange`, and count only active time toward the 5 minutes and `durationMs`. A round closed before it finishes is discarded
-- [ ] Record `frameMs`, threshold, and requested and actual duration statistics in `meta`
-- [ ] Add the first-time animated demo and 3 practice trials at a 1000 ms flash, plus a "Show me again" control
-- [ ] Add a landscape notice asking her to turn the phone upright, because iOS may not enforce the manifest orientation
-- [ ] Add a basic `Home` and `RoundSummary` to start, finish and save a speed round, ending the round after the current trial once 5 minutes have passed
-- [ ] Add a `Settings` screen with language and an About section showing the app version, whether storage is persistent and the last measured frame interval
-- [ ] Add a build-only `VITE_E2E` flag that shortens rounds and exposes the correct answer through a data attribute
-- [ ] Deploy to Vercel Hobby with the user's account using the Keychain token described under Accounts and access and the default `*.vercel.app` domain
+- [x] Add `measureFrameInterval` to `src/core/timing/flash.ts`: median rAF delta over 30 frames at round start
+- [x] Add `presentFlash` to `src/core/timing/flash.ts`: show a preloaded stimulus on one rAF, hide it on the first frame where elapsed time is at least requested minus half a frame, and return the actual duration and frame count
+- [x] Add `src/games/speed` with the `GameModule` interface, using levels 500, 400, 320, 250, 200, 160, 125, 100, 80, 65, 50, 34 and 17 ms, rounded at runtime to whole measured frames, with duplicates removed. At round start, map the saved flash length to the nearest available level
+- [x] Implement the speed trial as focus 500 ms, flash, mask 300 ms, centre question and outer position question, with both answers required for a correct trial and a clear ✓ or ✗ shape as feedback
+- [x] Implement stages: stage 1 has no distractors. Stage 2 adds triangles around the outer positions and starts after 2 consecutive rounds with a threshold of 80 ms or less, resetting to 250 ms
+- [x] Discard and do not score a trial if its actual duration differs from the request by more than 1 frame, or if the page was hidden. Pause the round clock on `visibilitychange`, and count only active time toward the 5 minutes and `durationMs`. A round closed before it finishes is discarded
+- [x] Record `frameMs`, threshold, and requested and actual duration statistics in `meta`
+- [x] Add the first-time animated demo and 3 practice trials at a 1000 ms flash, plus a "Show me again" control
+- [x] Add a landscape notice asking her to turn the phone upright, because iOS may not enforce the manifest orientation
+- [x] Add `Home` as today's pass to start, finish and save a speed round, ending the round after the current trial once 5 minutes have passed
+- [x] Add a `Settings` screen with language and an About section showing the app version, whether storage is persistent and the last measured frame interval
+- [x] Add a build-only `VITE_E2E` flag that shortens rounds and exposes the correct answer through a data attribute
+- [-] Deploy to Vercel Hobby with the user's account using the Keychain token described under Accounts and access and the default `*.vercel.app` domain
 
 **Automated Verification**:
-- [ ] `npm run typecheck` passes, including that `de.ts` and `vi.ts` have every key in `en.ts`
-- [ ] `npm test`: simulated players with known ability converge to 79.4% correct within ±5 percentage points over many trials
-- [ ] `npm test`: `Staircase` state survives a JSON round trip and stays within its level bounds
-- [ ] `npm test`: with fake frame timings, `presentFlash` returns correct actual durations at 60 Hz, 120 Hz and 30 Hz, and flags a dropped frame
-- [ ] `npm test`: speed levels are rounded to distinct whole frames at each frame rate
-- [ ] `npm test`: a saved 34 ms flash maps to the nearest available level at 30 Hz and returns to the same value at 60 Hz, staying in bounds
-- [ ] `npm test`: pause time isn't counted in `durationMs`, and a round closed early saves no result
-- [ ] `npm test`: a trial with one right and one wrong answer counts as wrong
-- [ ] `npm test`: a test scans the i18n files for the forbidden words `dementia`, `Demenz`, `sa sút trí tuệ`, `brain age`, `Gehirnalter`, `clinically proven` and `klinisch`
-- [ ] `npm run build` passes, and a test reads the generated manifest for standalone display and icons
-- [ ] `npm run test:e2e` on a Playwright iPhone WebKit profile: choosing a language and finishing a speed round saves a result that survives a reload
-- [ ] `npm run test:e2e` on Chromium: after one online load, the app starts and completes a round with the network off
+- [x] `npm run typecheck` passes, including that `de.ts` and `vi.ts` have every key in `en.ts`
+- [x] `npm test`: simulated players with known ability converge to 79.4% correct within ±5 percentage points over many trials
+- [x] `npm test`: `Staircase` state survives a JSON round trip and stays within its level bounds
+- [x] `npm test`: with fake frame timings, `presentFlash` returns correct actual durations at 60 Hz, 120 Hz and 30 Hz, and flags a dropped frame
+- [x] `npm test`: speed levels are rounded to distinct whole frames at each frame rate
+- [x] `npm test`: a saved 34 ms flash maps to the nearest available level at 30 Hz and returns to the same value at 60 Hz, staying in bounds
+- [x] `npm test`: pause time isn't counted in `durationMs`, and a round closed early saves no result
+- [x] `npm test`: a trial with one right and one wrong answer counts as wrong
+- [x] `npm test`: a test scans the i18n files for the forbidden words `dementia`, `Demenz`, `sa sút trí tuệ`, `brain age`, `Gehirnalter`, `clinically proven` and `klinisch`
+- [x] `npm run build` passes, and a test reads the generated manifest for standalone display and icons
+- [x] `npm run test:e2e` on a Playwright iPhone WebKit profile: choosing a language and finishing a speed round saves a result that survives a reload
+- [x] `npm run test:e2e` on Chromium: after one online load, the app starts and completes a round with the network off
 
 **Manual Verification**:
 - [ ] Add the deployed app to the Home Screen on the iPhone 17 Pro Max and confirm it opens full screen
@@ -374,33 +374,33 @@ Dependencies: Phase 1
 Turn the single game into the daily routine with all 4 wordless rotating games and her progress screens.
 
 **Tasks**:
-- [ ] Add `src/core/registry.ts` and move the speed game into it
-- [ ] Add `src/core/setGenerator.ts`: speed first, then the 2 rotating games played least recently, with ties broken by a seed from the date. Saved in `todaysSet`, keyed by date and set number, so reopening resumes the stored set and "Play another set" starts the next number
-- [ ] Add `src/screens/SetRunner`: run the games in order from the stored set, keep progress after each round and resume at the first unfinished game on the same day
-- [ ] Add `src/games/memoryGrid`: show a lit pattern, then tap it back with no time limit. Levels run from 3 tiles on a 4×4 grid up to 9 tiles on a 5×5 grid. `scoreUnit` is tiles, higher is better
-- [ ] Add `src/games/arrows`: tap the direction of the middle arrow among flankers, with congruent and incongruent trials. Levels shorten the answer window from 3000 ms to 800 ms. `scoreUnit` is ms, lower is better
-- [ ] Add `src/games/tapOrWait`: tap on circles and wait on squares, 75% tap trials. Levels shorten the display window from 2500 ms to 700 ms. `scoreUnit` is ms, lower is better
-- [ ] Add `src/games/switchRule`: a cue shows which rule applies, shape or filled/outline, and she answers by that rule. Levels shorten the answer window from 4000 ms to 1200 ms. `scoreUnit` is ms, lower is better
-- [ ] Use shapes and fill patterns, never colour alone, in all games, and give each game a demo and practice round
-- [ ] Add `src/core/week.ts`: Monday-based days played, total minutes and target progress, using `localDate`. A day counts once its first round finishes
-- [ ] Add `src/core/bests.ts`: new personal bests by game and stage, honouring `scoreDirection`
-- [ ] Complete `Home` with the weekly dots, Start button, "Done for today", "Play another set", this week's minutes and new bests. Show extra days beyond the target as a plain count
-- [ ] Complete `RoundSummary` so it shows only positive items: time played and any new best. Never show a falling score
-- [ ] Add the "Days a week" setting (3, 5 or 7, default 5)
-- [ ] Respect `prefers-reduced-motion` in demos and transitions, while keeping the speed flash itself unchanged
+- [x] Add `src/core/registry.ts` and move the speed game into it
+- [x] Add `src/core/setGenerator.ts`: speed first, then the 2 rotating games played least recently, with ties broken by a seed from the date. Saved in `todaysSet`, keyed by date and set number, so reopening resumes the stored set and "Play another set" starts the next number
+- [x] Add `src/screens/SetRunner`: run the games in order from the stored set, keep progress after each round and resume at the first unfinished game on the same day
+- [x] Add `src/games/memoryGrid`: show a lit pattern, then tap it back with no time limit. Levels run from 3 tiles on a 4×4 grid up to 9 tiles on a 5×5 grid. `scoreUnit` is tiles, higher is better
+- [x] Add `src/games/arrows`: tap the direction of the middle arrow among flankers, with congruent and incongruent trials. Levels shorten the answer window from 3000 ms to 800 ms. `scoreUnit` is ms, lower is better
+- [x] Add `src/games/tapOrWait`: tap on circles and wait on squares, 75% tap trials. Levels shorten the display window from 2500 ms to 700 ms. `scoreUnit` is ms, lower is better
+- [x] Add `src/games/switchRule`: a cue shows which rule applies, shape or filled/outline, and she answers by that rule. Levels shorten the answer window from 4000 ms to 1200 ms. `scoreUnit` is ms, lower is better
+- [x] Use shapes and fill patterns, never colour alone, in all games, and give each game a demo and practice round
+- [x] Add `src/core/week.ts`: Monday-based days played, total minutes and target progress, using `localDate`. A day counts once its first round finishes
+- [x] Add `src/core/bests.ts`: new personal bests by game and stage, honouring `scoreDirection`
+- [x] Complete `Home` with the week in words ("3 of 5 days"), Start button, "Done for today", "Play another set", this week's minutes and new bests. Show extra days beyond the target as a plain count
+- [x] After each game, return to the pass, which shows only positive items: time played and any new best. Never show a falling score
+- [x] Add the "Days a week" setting (3, 5 or 7, default 5)
+- [x] Respect `prefers-reduced-motion` in demos and transitions, while keeping the speed flash itself unchanged
 
 **Automated Verification**:
-- [ ] `npm test`: the generator always puts speed first, picks 2 different rotating games and picks the least recently played
-- [ ] `npm test`: reopening after playing a round returns the stored set unchanged, "Play another set" gets a new set number, and a game added to the registry enters the rotation with no generator change
-- [ ] `npm test`: `score` follows its definition for fixtures with more and fewer than 6 reversals
-- [ ] `npm test`: `weekProgress` handles the Monday reset, a daylight-saving change, extra sets on one day and each of the 3, 5 and 7 targets
-- [ ] `npm test`: `newBests` handles both score directions and treats speed stages separately
-- [ ] `npm test`: each game's scoring logic is covered with a seeded generator, including a no-response window in `tapOrWait`
-- [ ] `npm test`: home and summary rendering output never includes a raw score drop when the fixture's last score is worse than before
-- [ ] `npm run typecheck` and `npm run build` pass
-- [ ] `npm run test:e2e` on the iPhone profile: a full set runs across 3 games, the week dot fills, and reopening mid-set resumes at the next game
-- [ ] `npm run test:e2e`: all interactive controls on home and in each game measure at least 60×60 CSS px
-- [ ] `npm run test:e2e`: switching among the 3 languages on each screen causes no horizontal overflow at the iPhone profile width
+- [x] `npm test`: the generator always puts speed first, picks 2 different rotating games and picks the least recently played
+- [x] `npm test`: reopening after playing a round returns the stored set unchanged, "Play another set" gets a new set number, and a game added to the registry enters the rotation with no generator change
+- [x] `npm test`: `score` follows its definition for fixtures with more and fewer than 6 reversals
+- [x] `npm test`: `weekProgress` handles the Monday reset, a daylight-saving change, extra sets on one day and each of the 3, 5 and 7 targets
+- [x] `npm test`: `newBests` handles both score directions and treats speed stages separately
+- [x] `npm test`: each game's scoring logic is covered with a seeded generator, including a no-response window in `tapOrWait`
+- [x] `npm test`: home rendering output never includes a raw score drop when the fixture's last score is worse than before
+- [x] `npm run typecheck` and `npm run build` pass
+- [x] `npm run test:e2e` on the iPhone profile: a full set runs across 3 games, the week count goes up, and reopening mid-set resumes at the next game
+- [x] `npm run test:e2e`: all interactive controls on home and in each game measure at least 60×60 CSS px
+- [x] `npm run test:e2e`: switching among the 3 languages on each screen causes no horizontal overflow at the iPhone profile width
 
 **Manual Verification**:
 - [ ] Have her play a full set on her iPhone and confirm it takes about 10 minutes and all instructions make sense
@@ -416,7 +416,7 @@ Back up results to Neon, make restoring possible and provide the private read-on
 
 **Tasks**:
 - [ ] Add the connection string from `.env.local` to the Vercel project as `DATABASE_URL` with `vercel env add`, without printing it
-- [ ] Add `server/schema.sql` and `npm run db:migrate`
+- [x] Add `server/schema.sql` and `npm run db:migrate`
   ```sql
   create table if not exists profiles (
     id uuid primary key default gen_random_uuid(),
@@ -446,54 +446,54 @@ Back up results to Neon, make restoring possible and provide the private read-on
   );
   create index if not exists results_profile_time on results (profile_id, started_at);
   ```
-- [ ] Add `server/db.ts` with a small `Db` interface, a `@neondatabase/serverless` adapter and a PGlite adapter for tests
-- [ ] Add `server/validate.ts` with Zod schemas, a 100-result batch limit and a 256 KB body limit
-- [ ] Add `POST /api/profiles` to `server/routes.ts`: owner bearer plus `viewHash`. Creates the profile subject to `MAX_PROFILES`, and returns `200` if that owner already exists
-- [ ] Add `DELETE /api/profiles` to `server/routes.ts`: owner bearer. Removes that profile and its results
-- [ ] Add `POST /api/sync` to `server/routes.ts`: owner bearer, with `401` for an unknown code. Validates each result on its own, inserts valid ones with `on conflict do nothing`, and returns `acceptedIds` and `rejectedIds`. Merges settings and game state with `src/core/mergeState.ts`. Compares the sent `viewHash` with the stored one and returns `viewLinkCurrent`
-- [ ] Add `GET /api/restore?after=<cursor>` to `server/routes.ts`: owner bearer, read-only. Returns settings, game state and up to 500 results per page
-- [ ] Add `PUT /api/view-link` to `server/routes.ts`: owner bearer. Replaces `view_hash`
-- [ ] Add `GET /api/view` to `server/routes.ts`: view bearer, read-only. Returns aggregated trends, days per week, speed hours and last sync, labelled from the stored game IDs
-- [ ] Set `Cache-Control: no-store` on all API responses
-- [ ] Add `src/core/mergeState.ts` with the game state and settings rules from decision 14
-- [ ] Add `api/index.ts` as a single fetch handler that calls `server/routes.ts`, with the `/api/:path*` rewrite in `vercel.json`
-- [ ] Add `scripts/dev-api.ts` and a Vite proxy so `npm run dev` and e2e tests reach the API on PGlite
+- [x] Add `server/db.ts` with a small `Db` interface, a `@neondatabase/serverless` adapter and a PGlite adapter for tests
+- [x] Add `server/validate.ts` with Zod schemas, a 100-result batch limit and a 256 KB body limit
+- [x] Add `POST /api/profiles` to `server/routes.ts`: owner bearer plus `viewHash`. Creates the profile subject to `MAX_PROFILES`, and returns `200` if that owner already exists
+- [x] Add `DELETE /api/profiles` to `server/routes.ts`: owner bearer. Removes that profile and its results
+- [x] Add `POST /api/sync` to `server/routes.ts`: owner bearer, with `401` for an unknown code. Validates each result on its own, inserts valid ones with `on conflict do nothing`, and returns `acceptedIds` and `rejectedIds`. Merges settings and game state with `src/core/mergeState.ts`. Compares the sent `viewHash` with the stored one and returns `viewLinkCurrent`
+- [x] Add `GET /api/restore?after=<cursor>` to `server/routes.ts`: owner bearer, read-only. Returns settings, game state and up to 500 results per page
+- [x] Add `PUT /api/view-link` to `server/routes.ts`: owner bearer. Replaces `view_hash`
+- [x] Add `GET /api/view` to `server/routes.ts`: view bearer, read-only. Returns aggregated trends, days per week, speed hours and last sync, labelled from the stored game IDs
+- [x] Set `Cache-Control: no-store` on all API responses
+- [x] Add `src/core/mergeState.ts` with the game state and settings rules from decision 14
+- [x] Add `api/index.ts` as a single fetch handler that calls `server/routes.ts`, with the `/api/:path*` rewrite in `vercel.json`
+- [x] Add `scripts/dev-api.ts` and a Vite proxy so `npm run dev` and e2e tests reach the API on PGlite
 - [ ] Apply `server/schema.sql` to production by running `npm run db:migrate` with `DATABASE_URL_UNPOOLED` from `.env.local`
-- [ ] Add `src/sync/identity.ts`: create the recovery code and view token with `crypto.getRandomValues`, display the code in groups of 4 base32 characters, and hash with `crypto.subtle`. Existing Phase 1 and 2 installs create these on first launch after updating
-- [ ] Register the profile with `POST /api/profiles` after her first finished round, not on launch, and retry until it succeeds. Results stay unsynced until then
-- [ ] Add `src/sync/client.ts`: `syncNow` on app open, after each round and on the `online` event, in batches of up to 100 oldest-first, with backoff retries while the app is open. Do not rely on background sync
-- [ ] Mark `rejectedIds` with `syncRejectedAt` so they stop being sent, and show the count in About
-- [ ] On `viewLinkCurrent: false`, show in Settings that this phone's link was replaced elsewhere, and offer to replace it
-- [ ] Add the Backup section in Settings: last backup, Show recovery code, Share private link with `navigator.share` and a copy fallback, and Replace private link with a confirmation
-- [ ] Add `Restore`: enter the recovery code once, tolerating spaces and case, confirm when local data exists, read all pages, and merge results by ID and state with `mergeState.ts`. Change nothing locally until every page has arrived
-- [ ] After a successful restore: adopt the restored identity, clear `syncedAt` on results not in the backup so they upload to it, and delete the phone's previous profile with its old code if it had registered one
-- [ ] After a successful restore, create a new view token and call `PUT /api/view-link`. Save the token only after a success, retry on later syncs if it fails, and explain that the old private link stops working
-- [ ] Add `PrivateView` at `/view#<token>`: read the token from the URL fragment, send it as a bearer header, and show the charts as small inline SVG with text labels, plus the not-a-health-check notice
-- [ ] Do not let the private view read or write the player's local data, and do not show install prompts on that route
-- [ ] Translate all new strings, with the private view following the browser's language among the 3 supported languages
+- [x] Add `src/sync/identity.ts`: create the recovery code and view token with `crypto.getRandomValues`, display the code in groups of 4 base32 characters, and hash with `crypto.subtle`. Existing Phase 1 and 2 installs create these on first launch after updating
+- [x] Register the profile with `POST /api/profiles` after her first finished round, not on launch, and retry until it succeeds. Results stay unsynced until then
+- [x] Add `src/sync/client.ts`: `syncNow` on app open, after each round and on the `online` event, in batches of up to 100 oldest-first, with backoff retries while the app is open. Do not rely on background sync
+- [x] Mark `rejectedIds` with `syncRejectedAt` so they stop being sent, and show the count in About
+- [x] On `viewLinkCurrent: false`, show in Settings that this phone's link was replaced elsewhere, and offer to replace it
+- [x] Add the Backup section in Settings: last backup, Show recovery code, Share private link with `navigator.share` and a copy fallback, and Replace private link with a confirmation
+- [x] Add `Restore`: enter the recovery code once, tolerating spaces and case, confirm when local data exists, read all pages, and merge results by ID and state with `mergeState.ts`. Change nothing locally until every page has arrived
+- [x] After a successful restore: adopt the restored identity, clear `syncedAt` on results not in the backup so they upload to it, and delete the phone's previous profile with its old code if it had registered one
+- [x] After a successful restore, create a new view token and call `PUT /api/view-link`. Save the token only after a success, retry on later syncs if it fails, and explain that the old private link stops working
+- [x] Add `PrivateView` at `/view#<token>`: read the token from the URL fragment, send it as a bearer header, and show the charts as small inline SVG with text labels, plus the not-a-health-check notice
+- [x] Do not let the private view read or write the player's local data, and do not show install prompts on that route
+- [x] Translate all new strings, with the private view following the browser's language among the 3 supported languages
 
 **Automated Verification**:
-- [ ] `npm test` (PGlite): sending the same batch twice inserts each result once
-- [ ] `npm test`: `/api/sync` with an unknown code gets `401` and creates no profile, and registering profile `MAX_PROFILES + 1` gets `403 profile_limit`
-- [ ] `npm test`: repeating `POST /api/profiles` with the same owner returns `200` and creates no second profile
-- [ ] `npm test`: an oversize or malformed body gets `413` or `400` and writes nothing, while one invalid result in a valid batch appears in `rejectedIds` and the rest are stored
-- [ ] `npm test`: the client stops resending rejected results and continues with later ones
-- [ ] `npm test`: `GET /api/restore` changes no data, however many times it runs
-- [ ] `npm test`: restore after local play uploads those results to the restored profile, removes the old profile and frees its `MAX_PROFILES` slot
-- [ ] `npm test`: an interrupted restore leaves local data and the old view link untouched
-- [ ] `npm test`: `viewLinkCurrent` is false after the link is replaced from another device
-- [ ] `npm test`: the view token cannot call `sync`, `restore` or `view-link`
-- [ ] `npm test`: after replacing the link, the old view token gets `401` and the new one works
-- [ ] `npm test`: older `settingsUpdatedAt` values don't overwrite newer settings
-- [ ] `npm test`: per game, a state with fewer `totalTrials` doesn't overwrite one with more, even if it is newer
-- [ ] `npm test`: `/api/restore` pagination returns every result exactly once across pages
-- [ ] `npm test`: the database stores only hashes, and API log lines contain no codes or tokens
-- [ ] `npm test`: sync client failure leaves results unsynced, and the next run sends them
-- [ ] `npm test`: speed hours and weekly summaries from `/api/view` match known fixtures
-- [ ] `npm run typecheck` and `npm run build` pass
-- [ ] `npm run test:e2e` with a local API: play a round, confirm its backup, clear browser storage, restore with the code and confirm history returns
-- [ ] `npm run test:e2e`: `/view#<token>` shows trends and the notice, and contains no control that changes data
-- [ ] `npm test`: evaluating the rewrite pattern from `vercel.json` confirms `/api/...` paths aren't sent to the SPA, and the PWA config denies `/api/` navigation fallback
+- [x] `npm test` (PGlite): sending the same batch twice inserts each result once
+- [x] `npm test`: `/api/sync` with an unknown code gets `401` and creates no profile, and registering profile `MAX_PROFILES + 1` gets `403 profile_limit`
+- [x] `npm test`: repeating `POST /api/profiles` with the same owner returns `200` and creates no second profile
+- [x] `npm test`: an oversize or malformed body gets `413` or `400` and writes nothing, while one invalid result in a valid batch appears in `rejectedIds` and the rest are stored
+- [x] `npm test`: the client stops resending rejected results and continues with later ones
+- [x] `npm test`: `GET /api/restore` changes no data, however many times it runs
+- [x] `npm test`: restore after local play uploads those results to the restored profile, removes the old profile and frees its `MAX_PROFILES` slot
+- [x] `npm test`: an interrupted restore leaves local data and the old view link untouched
+- [x] `npm test`: `viewLinkCurrent` is false after the link is replaced from another device
+- [x] `npm test`: the view token cannot call `sync`, `restore` or `view-link`
+- [x] `npm test`: after replacing the link, the old view token gets `401` and the new one works
+- [x] `npm test`: older `settingsUpdatedAt` values don't overwrite newer settings
+- [x] `npm test`: per game, a state with fewer `totalTrials` doesn't overwrite one with more, even if it is newer
+- [x] `npm test`: `/api/restore` pagination returns every result exactly once across pages
+- [x] `npm test`: the database stores only hashes, and API log lines contain no codes or tokens
+- [x] `npm test`: sync client failure leaves results unsynced, and the next run sends them
+- [x] `npm test`: speed hours and weekly summaries from `/api/view` match known fixtures
+- [x] `npm run typecheck` and `npm run build` pass
+- [x] `npm run test:e2e` with a local API: play a round, confirm its backup, clear browser storage, restore with the code and confirm history returns
+- [x] `npm run test:e2e`: `/view#<token>` shows trends and the notice, and contains no control that changes data
+- [x] `npm test`: evaluating the rewrite pattern from `vercel.json` confirms `/api/...` paths aren't sent to the SPA, and the PWA config denies `/api/` navigation fallback
 
 **Manual Verification**:
 - [ ] On the deployed app, play one round on the iPhone in Airplane Mode, turn the network back on, open the app and confirm "Last backup" updates
@@ -543,6 +543,16 @@ During implementation, document user feedback, problems, and decisions here.
 
 - Her age, eyesight and hand comfort weren't specified, so the plan uses harder-case defaults: large text and targets, slow first levels and guided practice.
 - Out of scope for this version: push notifications, syncing live between several devices, account login, app-store release, and an in-app "delete my backup" button (data can be removed through the Neon dashboard).
+- Daily loop design, confirmed by the user on 2026-11-02 and recorded in `PRODUCT.md`:
+  - The product and Home Screen name is Mr. K's Training. `pcogni` stays as the repository and Neon project name.
+  - She isn't a digital native: every control carries words, only single taps are needed, and any button that loses progress explains the consequences first.
+  - The chosen look is the Boarding Pass direction, with today's set as one pass she returns to between games. This replaces the separate `RoundSummary` screen.
+  - The week shows in words rather than dots, and the bundled Be Vietnam Pro font replaces the system font stack.
+  - Each game has a "Leave this game" button that explains what will happen before anything is lost.
+- `server/dbPglite.ts` holds the PGlite adapter rather than `server/db.ts`, so the deployed function never bundles the Postgres WASM build.
+- `server/` and `api/` import with `.js` extensions, because Vercel's runtime compiles each file separately under `"type": "module"`. This hasn't been confirmed on a real deployment yet.
+- The German and Vietnamese app text is a draft and needs a native speaker's review.
+- Production steps are on hold until the user decides how to run them: the Vercel deploy was blocked by the permission check on 2026-11-02, and the related `vercel env add` and production `db:migrate` steps haven't been attempted.
 - `@typescript-eslint` currently declares TypeScript below 6.1, so no ESLint is planned. Type-checking and tests provide the static checks.
 
 ## References

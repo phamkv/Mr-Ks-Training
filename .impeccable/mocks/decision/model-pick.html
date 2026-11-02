@@ -1,0 +1,32 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Tear-off Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:440px;height:956px;overflow:hidden;background:#C4161C;font-family:"Be Vietnam Pro",sans-serif;color:#141414;padding:62px 18px 40px;display:flex;flex-direction:column}
+.bind{height:22px;border-radius:8px 8px 0 0;background:#141414;margin:0 6px}
+.page{flex:1;background:#FCFCFA;padding:20px 24px 24px;display:flex;flex-direction:column;box-shadow:0 5px 0 #e4e3df,0 10px 0 #cfcdc8;border-radius:0 0 6px 6px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.month{font-size:25px;font-weight:800;line-height:1.2}
+.gear{width:64px;height:64px;border-radius:50%;border:3px solid #141414;display:grid;place-items:center}
+.num{font-family:Anton,sans-serif;font-size:290px;line-height:1;color:#C4161C;text-align:center;margin-top:6px}
+.dow{font-family:Anton,sans-serif;font-size:50px;text-align:center;line-height:1.2;letter-spacing:.01em}
+.lunar{text-align:center;font-size:24px;font-weight:500;margin-top:4px;padding-bottom:18px;border-bottom:3px solid #141414}
+.set{margin-top:18px;font-size:26px;font-weight:700;line-height:1.35}
+.set span{font-weight:500}
+.start{margin-top:auto;height:118px;border-radius:14px;background:#C4161C;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.start b{font-size:44px;font-weight:800;line-height:1.1}
+.start i{font-style:normal;font-size:23px;font-weight:500}
+.week{margin-top:18px;color:#fff;font-size:24px;font-weight:700;text-align:center;line-height:1.35}
+</style></head><body>
+<div class="bind"></div>
+<main class="page">
+<div class="top"><div class="month">THÁNG 11<br>2026</div>
+<div class="gear" aria-label="Cài đặt"><svg width="34" height="34" viewBox="0 0 24 24" fill="#141414"><path d="M4 7h16v2.6H4zM4 14.4h16V17H4z"/><circle cx="9" cy="8.3" r="3"/><circle cx="16" cy="15.700" r="3"/></svg></div></div>
+<div class="num">2</div>
+<div class="dow">THỨ HAI</div>
+<div class="lunar">24 tháng 9 âm lịch</div>
+<p class="set">Tốc độ <span>rồi</span> Nhớ ô vuông <span>rồi</span> Mũi tên</p>
+<div class="start" role="button"><b>Bắt đầu</b><i>khoảng 10 phút</i></div>
+</main>
+<div class="week">3 trên 5 ngày · 32 phút</div>
+</body></html>

@@ -1,0 +1,37 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Road Sign</title>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:440px;height:956px;overflow:hidden;background:#0A4DA3;color:#fff;font-family:Overpass,sans-serif;padding:68px 24px 44px;display:flex;flex-direction:column}
+header{display:flex;justify-content:space-between;align-items:center;min-height:64px}
+h1{font-size:34px;font-weight:800;line-height:1.1}
+.gear{width:64px;height:64px;border-radius:50%;border:3px solid #fff;display:grid;place-items:center}
+.sign{margin-top:22px;border:5px solid #fff;border-radius:22px;padding:22px 20px 20px}
+.lead{font-size:26px;font-weight:800;margin-bottom:20px;display:flex;justify-content:space-between}.lead span{font-weight:600;font-size:24px}
+.stop{position:relative;display:flex;align-items:center;gap:18px;min-height:118px}
+.stop:not(:last-child)::after{content:"";position:absolute;left:37px;top:80px;width:8px;height:56px;background:#fff}
+.disc{position:relative;z-index:1;flex:none;width:82px;height:82px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.now .disc{background:#FFC800}
+.name{font-size:36px;font-weight:800;line-height:1.15}
+.next{font-weight:600;font-size:28px}
+.start{margin-top:auto;height:124px;border-radius:22px;background:#FFC800;color:#111;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.start b{font-size:50px;font-weight:900;line-height:1}
+.week{margin-top:22px;display:flex;align-items:center;justify-content:space-between}
+.days{display:flex;gap:7px}
+.d{width:30px;height:30px;border-radius:50%;border:3px solid #fff;display:grid;place-items:center}
+.d.on{background:#fff}
+.txt{font-size:24px;font-weight:600;line-height:1.3}
+</style></head><body>
+<header><h1>Chào buổi sáng</h1>
+<div class="gear" aria-label="Cài đặt"><svg width="34" height="34" viewBox="0 0 24 24" fill="#fff"><path d="M4 7h16v2.6H4zM4 14.4h16V17H4z"/><circle cx="9" cy="8.3" r="3"/><circle cx="16" cy="15.7" r="3"/></svg></div></header>
+<section class="sign">
+<p class="lead">Bài hôm nay<span>khoảng 10 phút</span></p>
+<div class="stop now"><div class="disc"><svg width="58" height="58" viewBox="0 0 48 48" fill="#111"><path d="M6 30v-7l5-2 5-8h15l7 8 5 2v7h-4a5 5 0 0 1-10 0H19a5 5 0 0 1-10 0zM19 16l-3 5h7v-5zm7 0v5h8l-4-5z"/></svg></div><div class="name">Tốc độ</div></div>
+<div class="stop"><div class="disc"><svg width="50" height="50" viewBox="0 0 48 48" fill="#0A4DA3"><path d="M5 5h11v11H5zM18.500 5h11v11h-11zM32 18.500h11v11H32zM5 32h11v11H5zM32 32h11v11H32z"/></svg></div><div class="next">Nhớ ô vuông</div></div>
+<div class="stop"><div class="disc"><svg width="56" height="56" viewBox="0 0 48 48" fill="#0A4DA3"><path d="M44 24 30 11v8H4v10h26v8z"/></svg></div><div class="next">Mũi tên</div></div>
+</section>
+<div class="start" role="button"><b>Bắt đầu</b><svg width="68" height="68" viewBox="0 0 48 48" fill="#111"><path d="M44 24 28 8v10H4v12h24v10z"/></svg></div>
+<div class="week"><div class="txt">3 trên 5 ngày</div>
+<div class="days"><div class="d on"></div><div class="d on"></div><div class="d on"></div><div class="d"></div><div class="d"></div></div></div>
+<div class="txt" style="margin-top:6px">Tuần này 32 phút</div>
+</body></html>
