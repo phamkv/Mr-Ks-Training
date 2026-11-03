@@ -2,12 +2,13 @@
 name: Mr. K's Training
 description: A one-person daily brain-game habit, carried on a single ticket that is both home and map.
 colors:
-  amber: "#ffb000"
-  ink: "#0e1b2c"
-  ink-soft: "#33445a"
-  on-ink-soft: "#cdd6e2"
-  paper: "#fff"
-  panel-tint: "#e9edf2"
+  amber: "#ffa914"
+  surround: "#833510"
+  ink: "#2e1508"
+  ink-soft: "#5f4332"
+  on-surround-soft: "#f8dfc6"
+  paper: "#fff7ea"
+  panel-tint: "#f4e4cc"
 typography:
   numeral:
     fontFamily: "Be Vietnam Pro, system-ui, sans-serif"
@@ -184,14 +185,14 @@ components:
 
 **Creative North Star: "The Day's Pass"**
 
-One white ticket on a dark navy surround is the whole world. The pass is both home and map: she leaves it to play a game and returns to the same ticket with the next row lit. Everything else, from a game to a settings page to a warning, is the same white panel on the same navy, so nothing feels like going somewhere new.
+One cream ticket on a burnt sienna surround is the whole world. The pass is both home and map: she leaves it to play a game and returns to the same ticket with the next row lit. Everything else, from a game to a settings page to a warning, is the same cream panel on the same sienna, so nothing feels like going somewhere new.
 
 The system borrows the structure of a boarding pass and a departure board: numbered rows, heavy dividing rules, tabular numerals, a perforated tear line with punched notches. It borrows no flight imagery or vocabulary. Density is deliberately low and the type is very large, because the only player needs larger text, has less steady hands and can't be expected to know app conventions. Hierarchy comes from size, weight and one lit row, never from decoration.
 
 German and Vietnamese copy is an unreviewed draft. No wording is recorded here as a standard, and layouts must hold up when strings change length.
 
 **Key Characteristics:**
-- One white panel on a navy surround, on every screen.
+- One cream panel on a sienna surround, on every screen.
 - One amber row that says where she is today.
 - Very large type, with 20 px as the floor.
 - Controls that are unmistakably shapes, with generous targets and a visible press.
@@ -199,24 +200,25 @@ German and Vietnamese copy is an unreviewed draft. No wording is recorded here a
 
 ## Colors
 
-A near-monochrome pairing of navy and white, with one saturated amber that carries position.
+A warm family of one hue: burnt sienna around cream paper, dark umber ink, and one saturated amber that carries position.
 
 ### Primary
-- **Departure Amber** (#ffb000): The band behind the current row on the pass and the arrow in the go button. It also marks text selection, and focus rings on the navy surround. The app icon and the install-help illustration show the same band because they are pictures of the pass. Ink reads on it at 9.46:1.
+- **Departure Amber** (#ffa914): The band behind the current row on the pass and the arrow in the go button. It also marks text selection, and focus rings on the surround (4.41:1). The app icon and the install-help illustration show the same band because they are pictures of the pass. Ink reads on it at 8.91:1. It sits a little deeper than a pure amber so the band stands out from cream as strongly as it would from white.
 
 ### Neutral
-- **Night Ink** (#0e1b2c): The surround, all text on white, rules, filled buttons, selected options, lit tiles and game shapes. Used on white it reaches 17.33:1.
-- **Slate Ink** (#33445a): Quiet notes on white and the disabled button label (9.93:1 on white).
-- **Pale Slate** (#cdd6e2): Secondary text on the navy surround only (11.81:1 on ink).
-- **Ticket White** (#fff): The panel, button labels on ink, and all primary text on the surround.
-- **Tint** (#e9edf2): Resting fill of location spots, disabled button fill, and the light table rules on fact lists. At 1.18:1 against white it never carries meaning alone.
+- **Burnt Sienna** (#833510): The surround on every screen, the notches punched into the ticket, and the browser and manifest theme colour. Cream text reads on it at 7.96:1. It's held to the brown-orange side of red, so a whole screen of it never reads as an alarm.
+- **Umber Ink** (#2e1508): All text on the panel, rules, filled buttons, selected options, lit tiles and game shapes. On cream it reaches 16.09:1. It is not the surround: an ink control on sienna has only 2.02:1 at its edge, so ink-filled controls stay inside the panel.
+- **Walnut** (#5f4332): Quiet notes on cream and the disabled button label (8.45:1 on cream, 7.20:1 on Tint).
+- **Pale Apricot** (#f8dfc6): Secondary text on the surround only (6.59:1 on sienna).
+- **Ticket Cream** (#fff7ea): The panel, button labels on ink, and all primary text on the surround.
+- **Tint** (#f4e4cc): Resting fill of location spots, disabled button fill, and the light table rules on fact lists. At 1.17:1 against cream it never carries meaning alone.
 
 ### Named Rules
 **The One Lit Row Rule.** Amber as a state means "you are here" and appears on one row of the pass. The go-button arrow is its only companion. Selected options, correct answers, lit tiles, game feedback and charts never use it.
 
-**The No Amber On White Rule.** Amber never colours text, icons or rings directly on white (1.83:1). That is why focus rings switch to ink inside a panel.
+**The No Amber On Cream Rule.** Amber never colours text, icons or rings directly on cream (1.81:1). That is why focus rings switch to ink inside a panel.
 
-**The No Red Rule.** The system has no red and no alarm colour. A wrong answer is an ink cross, and nothing on her screens signals failure with colour.
+**The No Red Rule.** The system has no red and no alarm colour, and the warm palette stays brown-orange rather than drifting towards it. A wrong answer is an ink cross, and nothing on her screens signals failure with colour.
 
 ## Typography
 
@@ -245,7 +247,7 @@ A near-monochrome pairing of navy and white, with one saturated amber that carri
 
 ## Layout
 
-The app is a single column of `min(100vw, 520px)`, centred on the navy surround, with a 20px gutter and safe-area insets added to the top and bottom. On desktop it stays that column rather than reflowing. The private view is the one exception, widening to 720px because it is read by her child in an ordinary browser. Landscape on a short screen (height up to 520px) is replaced by a full-screen request to turn the phone upright.
+The app is a single column of `min(100vw, 520px)`, centred on the sienna surround, with a 20px gutter and safe-area insets added to the top and bottom. On desktop it stays that column rather than reflowing. The private view is the one exception, widening to 720px because it is read by her child in an ordinary browser. Landscape on a short screen (height up to 520px) is replaced by a full-screen request to turn the phone upright.
 
 Each screen has a bar of at least 64px on the surround (title on the left, one small button on the right) and a panel below. On the pass and in games the panel grows to fill the remaining height (`100svh`), so the primary action stays within thumb reach at the bottom. Messages and dialogs centre their panel vertically instead.
 
@@ -255,7 +257,7 @@ Spacing is roomy and slightly irregular by role: 22px panel inset, 18px around g
 
 ## Elevation & Depth
 
-The system is flat. There are no cast shadows, blurs or translucent layers: depth is the white panel against the navy, and rules divide everything inside it. The only `box-shadow` values are inset rings drawn during a press.
+The system is flat. There are no cast shadows, blurs or translucent layers: depth is the cream panel against the sienna, and rules divide everything inside it. The only `box-shadow` values are inset rings drawn during a press.
 
 **The Punched Not Lifted Rule.** The ticket is paper lying flat. Its one dimensional detail is the pair of notches cut from its edges, which are simply the surround showing through.
 
@@ -269,37 +271,37 @@ Controls are plain, tactile and literal: a filled or outlined shape that looks p
 
 ### Buttons
 - **Shape:** Gently rounded (14px), full width except the small button, 76px minimum height.
-- **Primary:** Ink fill with white text, for the one obvious next action.
+- **Primary:** Ink fill with cream text, for the one obvious next action.
 - **Secondary:** 3px ink outline with ink text, for the equally clear alternative or way back.
 - **Large:** Primary at 104px and 32px type, used when a dialog has a safe main choice.
 - **Tap:** Primary at 150px and 40px type, the single answer button in the tap game.
-- **Small:** 3px white outline with white text on the surround, 60px minimum, used only in the top bars. It may pair an icon with its word.
-- **Press:** Primary inverts to white with ink text and a 4px inset ink ring. Secondary, options and choices fill ink with white text. Small buttons are the exception today: they only gain a 3px inset ring, which is a known gap and not a pattern.
+- **Small:** 3px cream outline with cream text on the surround, 60px minimum, used only in the top bars. It may pair an icon with its word.
+- **Press:** Primary inverts to cream with ink text and a 4px inset ink ring. Secondary, options and choices fill ink with cream text. Small buttons are the exception today: they only gain a 3px inset ring, which is a known gap and not a pattern.
 - **Focus:** 4px ring at 3px offset, amber on the surround and ink inside a panel.
-- **Disabled:** Tint fill with Slate Ink text.
+- **Disabled:** Tint fill with Walnut text.
 
 ### Options
 - **Style:** Outlined 76px rows or a three-column segment, in 26px bold.
-- **State:** Selected fills ink with white text. Language rows add a check icon. A press inverts either state.
+- **State:** Selected fills ink with cream text. Language rows add a check icon. A press inverts either state.
 
 ### Inputs
-- **Style:** White fill, 3px ink outline, 14px radius, 76px minimum, 24px bold, with a 22px bold label above.
+- **Style:** Cream fill, 3px ink outline, 14px radius, 76px minimum, 24px bold, with a 22px bold label above.
 - **Focus:** The ink ring used throughout panels.
 
 ### Cards / Containers
-The panel is the only container: white, 20px radius, no border or shadow, clipping its contents. Nothing nests a panel inside a panel.
+The panel is the only container: cream, 20px radius, no border or shadow, clipping its contents. Nothing nests a panel inside a panel.
 
 ### The Pass (signature)
 A head row (title and date), then numbered rows divided by 3px ink rules, then the tear line and a stub holding one action. A finished row swaps its number for a check icon. Ink text stays on the row in every state, so only the band behind it changes. When she finishes a game the band slides once from the finished row to the next (1000ms after a 450ms delay, `cubic-bezier(0.45, 0, 0.25, 1)`), and with reduced motion it simply appears. This is the only animated transition in the system. When every row is done the band disappears and the stub reports it in words.
 
 ### Go Button
-A primary button 124px tall with the word on the left at display size, the time beneath it at 22px, and a 56px solid amber arrow on the right. The arrow currently stays amber when a press turns the button white (1.83:1), which is a known gap and not a pattern.
+A primary button 124px tall with the word on the left at display size, the time beneath it at 22px, and a 56px solid amber arrow on the right. The arrow currently stays amber when a press turns the button cream (1.81:1), which is a known gap and not a pattern.
 
 ### Answer Choices
 Two equal outlined cells side by side, each a picture above its word, at least 168px tall in play. In the speed game they stretch to fill the free height.
 
 ### Playing Pieces
-Location spots are tinted circles with a 4px ink outline, at least 64px. Memory tiles are white squares with a 3px ink outline that fill ink when lit. These are the game board, so they carry no labels; the prompt sentence above them says what to do. Two known gaps: a lit tile shows no change when pressed, and tiles in the 5 by 5 grid fall below 60px on screens narrower than about 408px (66px on her phone).
+Location spots are tinted circles with a 4px ink outline, at least 64px. Memory tiles are cream squares with a 3px ink outline that fill ink when lit. These are the game board, so they carry no labels; the prompt sentence above them says what to do. Two known gaps: a lit tile shows no change when pressed, and tiles in the 5 by 5 grid fall below 60px on screens narrower than about 408px (66px on her phone).
 
 ### Demo Target
 A 6px ink ring at 5px offset around the element she should tap, leaving its fill unchanged, on spots, choices and buttons alike. The doubled line reads as "this one" without implying it was already pressed. Demo targets are not live controls.
@@ -310,7 +312,7 @@ Ink line charts on two tint rules, with a readout above and a table behind a wor
 ## Do's and Don'ts
 
 ### Do:
-- **Do** put every screen on the navy surround in one white panel, with one obvious next action.
+- **Do** put every screen on the sienna surround in one cream panel, with one obvious next action.
 - **Do** give every button a word. The exceptions are the game's own pieces (location spots, memory tiles), whose instruction is the prompt sentence, and numeral options, whose heading names them.
 - **Do** make every new press state an inversion of the control, visible without fine eyesight.
 - **Do** keep text at 20 px or larger and targets at 60 px or larger.
@@ -319,7 +321,7 @@ Ink line charts on two tint rules, with a readout above and a table behind a wor
 - **Do** let strings change: German and Vietnamese copy is an unreviewed draft, so test layout rather than fixing wording.
 
 ### Don't:
-- **Don't** use amber for selection, success, games, charts or emphasis, or directly on white.
+- **Don't** use amber for selection, success, games, charts or emphasis, or directly on cream.
 - **Don't** use an icon alone as a navigation, confirm or settings control.
 - **Don't** fill a demo target to highlight it. Fill means lit or selected.
 - **Don't** add red, cast shadows, a fourth font weight or a second typeface.

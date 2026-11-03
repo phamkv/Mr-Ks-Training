@@ -20,9 +20,9 @@ function AddSymbol() {
 function AppSymbol() {
   return (
     <svg viewBox="0 0 48 48" aria-hidden="true">
-      <rect x="5" y="5" width="38" height="38" rx="9" fill="#0E1B2C" />
-      <rect x="13" y="11" width="22" height="26" rx="3" fill="#fff" />
-      <rect x="13" y="16" width="22" height="6" fill="#FFB000" />
+      <rect x="5" y="5" width="38" height="38" rx="9" fill="var(--surround)" />
+      <rect x="13" y="11" width="22" height="26" rx="3" fill="var(--paper)" />
+      <rect x="13" y="16" width="22" height="6" fill="var(--amber)" />
     </svg>
   );
 }

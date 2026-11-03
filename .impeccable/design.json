@@ -1,97 +1,112 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-02T18:01:10+00:00",
+  "generatedAt": "2026-11-03T09:00:00+00:00",
   "title": "Design System: Mr. K's Training",
   "extensions": {
     "colorMeta": {
       "amber": {
         "role": "primary",
         "displayName": "Departure Amber",
-        "canonical": "#ffb000",
+        "canonical": "#ffa914",
         "tonalRamp": [
-          "#160700",
-          "#341f00",
-          "#573900",
-          "#7c550a",
-          "#aa7402",
-          "#d89617",
-          "#f3c176",
-          "#fcecd6"
+          "#130800",
+          "#352001",
+          "#5c3a01",
+          "#855607",
+          "#b0740e",
+          "#de9316",
+          "#efc086",
+          "#fbecdb"
+        ]
+      },
+      "surround": {
+        "role": "neutral",
+        "displayName": "Burnt Sienna",
+        "canonical": "#833510",
+        "tonalRamp": [
+          "#1a0400",
+          "#421401",
+          "#702701",
+          "#974724",
+          "#bc6846",
+          "#df8e6d",
+          "#eebca9",
+          "#fbebe4"
         ]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Night Ink",
-        "canonical": "#0e1b2c",
+        "displayName": "Umber Ink",
+        "canonical": "#2e1508",
         "tonalRamp": [
-          "#050b15",
-          "#172536",
-          "#324154",
-          "#4f5f73",
-          "#718297",
-          "#95a6bd",
-          "#c0ccdb",
-          "#ebeff4"
+          "#130804",
+          "#351f13",
+          "#573a2c",
+          "#78594b",
+          "#9a7a6b",
+          "#bd9d8e",
+          "#d8c5bb",
+          "#f3edea"
         ]
       },
       "ink-soft": {
         "role": "neutral",
-        "displayName": "Slate Ink",
-        "canonical": "#33445a",
+        "displayName": "Walnut",
+        "canonical": "#5f4332",
         "tonalRamp": [
-          "#050b16",
-          "#152539",
-          "#304157",
-          "#4d5f76",
-          "#6f829a",
-          "#93a6c0",
-          "#bfccdd",
-          "#ebeff4"
+          "#130803",
+          "#351f11",
+          "#563b2a",
+          "#775a48",
+          "#9a7b68",
+          "#bc9e8c",
+          "#d8c5ba",
+          "#f3edea"
         ]
       },
-      "on-ink-soft": {
+      "on-surround-soft": {
         "role": "neutral",
-        "displayName": "Pale Slate",
-        "canonical": "#cdd6e2",
+        "displayName": "Pale Apricot",
+        "canonical": "#f8dfc6",
         "tonalRamp": [
-          "#080b10",
-          "#1e252d",
-          "#39404a",
-          "#575e69",
-          "#79818c",
-          "#9da5b1",
-          "#c5cbd3",
-          "#edeff1"
+          "#110903",
+          "#312110",
+          "#523e29",
+          "#725d47",
+          "#947e67",
+          "#b7a18b",
+          "#d4c7b9",
+          "#f2eee9"
         ]
       },
       "paper": {
         "role": "neutral",
-        "displayName": "Ticket White",
-        "canonical": "#fff",
+        "displayName": "Ticket Cream",
+        "canonical": "#fff7ea",
         "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#808080",
-          "#a4a4a4",
-          "#cacaca",
-          "#eeeeee"
+          "#0d0b07",
+          "#29241c",
+          "#474137",
+          "#676055",
+          "#888176",
+          "#aba499",
+          "#cdc8c2",
+          "#efeeec"
         ]
       },
       "panel-tint": {
         "role": "neutral",
         "displayName": "Tint",
-        "canonical": "#e9edf2",
+        "canonical": "#f4e4cc",
         "tonalRamp": [
-          "#0a0b0d",
-          "#212428",
-          "#3d4044",
-          "#5b5e62",
-          "#7d8185",
-          "#a1a5aa",
-          "#c8cbce",
-          "#eeeeef"
+          "#0f0a04",
+          "#2e2313",
+          "#4d402c",
+          "#6d5f4a",
+          "#8f806a",
+          "#b1a38e",
+          "#d0c8bb",
+          "#f1eeea"
         ]
       }
     },
@@ -148,8 +163,8 @@
     "shadows": [
       {
         "name": "press-ring",
-        "value": "inset 0 0 0 4px #0e1b2c",
-        "purpose": "Keeps an inverted primary button's edge visible on white during a press. The system has no cast shadows."
+        "value": "inset 0 0 0 4px #2e1508",
+        "purpose": "Keeps an inverted primary button's edge visible on cream during a press. The system has no cast shadows."
       }
     ],
     "motion": [
@@ -186,7 +201,7 @@
       "refersTo": "button-primary",
       "description": "Ink fill with a word, for the one obvious next action. A press inverts it.",
       "html": "<button class=\"ds-btn-primary\">Next</button>",
-      "css": ":host { --ink: #0e1b2c; --ink-soft: #33445a; --paper: #fff; --amber: #ffb000; --panel-tint: #e9edf2; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-btn-primary { display: flex; align-items: center; justify-content: center; text-align: center; width: 100%; min-height: 76px; padding: 12px 20px; border-radius: 14px; font-size: 24px; font-weight: 700; line-height: 1.25; cursor: pointer; background: var(--ink); color: var(--paper); border: 0; } .ds-btn-primary:active { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 4px var(--ink); } .ds-btn-primary:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
+      "css": ":host { --surround: #833510; --ink: #2e1508; --ink-soft: #5f4332; --paper: #fff7ea; --amber: #ffa914; --panel-tint: #f4e4cc; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-btn-primary { display: flex; align-items: center; justify-content: center; text-align: center; width: 100%; min-height: 76px; padding: 12px 20px; border-radius: 14px; font-size: 24px; font-weight: 700; line-height: 1.25; cursor: pointer; background: var(--ink); color: var(--paper); border: 0; } .ds-btn-primary:active { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 4px var(--ink); } .ds-btn-primary:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
     },
     {
       "name": "Secondary Button",
@@ -194,23 +209,23 @@
       "refersTo": "button-secondary",
       "description": "3px ink outline, for the alternative or the way back. A press fills it with ink.",
       "html": "<button class=\"ds-btn-secondary\">Show me</button>",
-      "css": ":host { --ink: #0e1b2c; --ink-soft: #33445a; --paper: #fff; --amber: #ffb000; --panel-tint: #e9edf2; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-btn-secondary { display: flex; align-items: center; justify-content: center; text-align: center; width: 100%; min-height: 76px; padding: 12px 20px; border-radius: 14px; font-size: 24px; font-weight: 700; line-height: 1.25; cursor: pointer; background: none; color: var(--ink); border: 3px solid var(--ink); } .ds-btn-secondary:active { background: var(--ink); color: var(--paper); } .ds-btn-secondary:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
+      "css": ":host { --surround: #833510; --ink: #2e1508; --ink-soft: #5f4332; --paper: #fff7ea; --amber: #ffa914; --panel-tint: #f4e4cc; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-btn-secondary { display: flex; align-items: center; justify-content: center; text-align: center; width: 100%; min-height: 76px; padding: 12px 20px; border-radius: 14px; font-size: 24px; font-weight: 700; line-height: 1.25; cursor: pointer; background: none; color: var(--ink); border: 3px solid var(--ink); } .ds-btn-secondary:active { background: var(--ink); color: var(--paper); } .ds-btn-secondary:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
     },
     {
       "name": "Small Button",
       "kind": "button",
       "refersTo": "button-small",
-      "description": "White outline on the navy surround, top bars only, with an amber focus ring. Its press state is left out on purpose: the build only adds an inset ring, a known gap that shouldn't be copied.",
+      "description": "Cream outline on the sienna surround, top bars only, with an amber focus ring. Its press state is left out on purpose: the build only adds an inset ring, a known gap that shouldn't be copied.",
       "html": "<div class=\"ds-surround\"><button class=\"ds-btn-small\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M3 6.7h18v2.6H3zM3 14.7h18v2.6H3z\"/><circle cx=\"8.5\" cy=\"8\" r=\"3\"/><circle cx=\"16\" cy=\"16\" r=\"3\"/></svg>Settings</button></div>",
-      "css": ":host { --ink: #0e1b2c; --ink-soft: #33445a; --paper: #fff; --amber: #ffb000; --panel-tint: #e9edf2; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-surround { background: var(--ink); padding: 20px; } .ds-btn-small { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 60px; min-width: 60px; padding: 8px 12px; background: none; border: 3px solid var(--paper); border-radius: 14px; color: var(--paper); font-size: 20px; font-weight: 700; line-height: 1.2; cursor: pointer; } .ds-btn-small:focus-visible { outline: 4px solid var(--amber); outline-offset: 3px; }"
+      "css": ":host { --surround: #833510; --ink: #2e1508; --ink-soft: #5f4332; --paper: #fff7ea; --amber: #ffa914; --panel-tint: #f4e4cc; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-surround { background: var(--surround); padding: 20px; } .ds-btn-small { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 60px; min-width: 60px; padding: 8px 12px; background: none; border: 3px solid var(--paper); border-radius: 14px; color: var(--paper); font-size: 20px; font-weight: 700; line-height: 1.2; cursor: pointer; } .ds-btn-small:focus-visible { outline: 4px solid var(--amber); outline-offset: 3px; }"
     },
     {
       "name": "Go Button",
       "kind": "custom",
       "refersTo": "button-go",
-      "description": "The pass's single action: word, time and amber arrow. Its press state is left out on purpose: the build leaves the arrow amber on white, a known gap that shouldn't be copied.",
+      "description": "The pass's single action: word, time and amber arrow. Its press state is left out on purpose: the build leaves the arrow amber on cream, a known gap that shouldn't be copied.",
       "html": "<button class=\"ds-btn-go\"><span class=\"ds-go-text\"><b>Start</b><span>about 10 min</span></span><span class=\"ds-go-arrow\"><svg width=\"56\" height=\"56\" viewBox=\"0 0 48 48\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M44 24 28 8v10H4v12h24v10z\"/></svg></span></button>",
-      "css": ":host { --ink: #0e1b2c; --ink-soft: #33445a; --paper: #fff; --amber: #ffb000; --panel-tint: #e9edf2; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-btn-go { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 124px; padding: 14px 24px; border: 0; border-radius: 14px; background: var(--ink); color: var(--paper); text-align: left; cursor: pointer; } .ds-go-text { display: flex; flex-direction: column; } .ds-go-text b { font-size: 46px; font-weight: 800; line-height: 1.2; } .ds-go-text span { font-size: 22px; font-weight: 500; } .ds-go-arrow { flex: none; color: var(--amber); } .ds-btn-go:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
+      "css": ":host { --surround: #833510; --ink: #2e1508; --ink-soft: #5f4332; --paper: #fff7ea; --amber: #ffa914; --panel-tint: #f4e4cc; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-btn-go { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 124px; padding: 14px 24px; border: 0; border-radius: 14px; background: var(--ink); color: var(--paper); text-align: left; cursor: pointer; } .ds-go-text { display: flex; flex-direction: column; } .ds-go-text b { font-size: 46px; font-weight: 800; line-height: 1.2; } .ds-go-text span { font-size: 22px; font-weight: 500; } .ds-go-arrow { flex: none; color: var(--amber); } .ds-btn-go:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
     },
     {
       "name": "Option",
@@ -218,7 +233,7 @@
       "refersTo": "option",
       "description": "Outlined choice row. Selected fills ink; a press inverts either state.",
       "html": "<div class=\"ds-options\"><button class=\"ds-option ds-option-selected\">Selected</button><button class=\"ds-option\">Another</button></div>",
-      "css": ":host { --ink: #0e1b2c; --ink-soft: #33445a; --paper: #fff; --amber: #ffb000; --panel-tint: #e9edf2; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-options { display: flex; flex-direction: column; gap: 14px; } .ds-option { display: flex; align-items: center; width: 100%; min-height: 76px; padding: 10px 20px; background: none; border: 3px solid var(--ink); border-radius: 14px; font-size: 26px; font-weight: 700; color: var(--ink); text-align: left; cursor: pointer; } .ds-option:active { background: var(--ink); color: var(--paper); } .ds-option-selected { background: var(--ink); color: var(--paper); } .ds-option-selected:active { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 4px var(--ink); } .ds-option:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
+      "css": ":host { --surround: #833510; --ink: #2e1508; --ink-soft: #5f4332; --paper: #fff7ea; --amber: #ffa914; --panel-tint: #f4e4cc; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-options { display: flex; flex-direction: column; gap: 14px; } .ds-option { display: flex; align-items: center; width: 100%; min-height: 76px; padding: 10px 20px; background: none; border: 3px solid var(--ink); border-radius: 14px; font-size: 26px; font-weight: 700; color: var(--ink); text-align: left; cursor: pointer; } .ds-option:active { background: var(--ink); color: var(--paper); } .ds-option-selected { background: var(--ink); color: var(--paper); } .ds-option-selected:active { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 4px var(--ink); } .ds-option:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
     },
     {
       "name": "Text Input",
@@ -226,7 +241,7 @@
       "refersTo": "text-input",
       "description": "The recovery-code field, with a label above and the ink focus ring used inside panels.",
       "html": "<label class=\"ds-label\" for=\"ds-input\">Recovery code</label><input id=\"ds-input\" class=\"ds-input\" />",
-      "css": ":host { --ink: #0e1b2c; --ink-soft: #33445a; --paper: #fff; --amber: #ffb000; --panel-tint: #e9edf2; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-label { display: block; margin-bottom: 8px; font-size: 22px; font-weight: 700; color: var(--ink); } .ds-input { width: 100%; min-height: 76px; padding: 12px 16px; border: 3px solid var(--ink); border-radius: 14px; background: var(--paper); color: var(--ink); font: inherit; font-size: 24px; font-weight: 700; letter-spacing: 0.02em; } .ds-input:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
+      "css": ":host { --surround: #833510; --ink: #2e1508; --ink-soft: #5f4332; --paper: #fff7ea; --amber: #ffa914; --panel-tint: #f4e4cc; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-label { display: block; margin-bottom: 8px; font-size: 22px; font-weight: 700; color: var(--ink); } .ds-input { width: 100%; min-height: 76px; padding: 12px 16px; border: 3px solid var(--ink); border-radius: 14px; background: var(--paper); color: var(--ink); font: inherit; font-size: 24px; font-weight: 700; letter-spacing: 0.02em; } .ds-input:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
     },
     {
       "name": "Answer Choice",
@@ -234,7 +249,7 @@
       "refersTo": "choice",
       "description": "Picture above a word in an outlined cell. A press fills it with ink.",
       "html": "<button class=\"ds-choice\"><svg width=\"104\" viewBox=\"0 0 64 36\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M2 26v-7l8-3 8-11c1-1 2-2 4-2h19c2 0 3 1 4 2l9 11 6 3c1 0 2 2 2 3v4h-6a7 7 0 0 0-14 0H22a7 7 0 0 0-14 0zm20-19-7 9h13V7zm10 0v9h14l-8-9z\"/><circle cx=\"15\" cy=\"27\" r=\"6\"/><circle cx=\"49\" cy=\"27\" r=\"6\"/></svg><span>Car</span></button>",
-      "css": ":host { --ink: #0e1b2c; --ink-soft: #33445a; --paper: #fff; --amber: #ffb000; --panel-tint: #e9edf2; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-choice { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; width: 180px; min-height: 168px; padding: 12px 8px; background: none; border: 3px solid var(--ink); border-radius: 14px; font-size: 24px; font-weight: 700; color: var(--ink); cursor: pointer; } .ds-choice:active { background: var(--ink); color: var(--paper); } .ds-choice:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
+      "css": ":host { --surround: #833510; --ink: #2e1508; --ink-soft: #5f4332; --paper: #fff7ea; --amber: #ffa914; --panel-tint: #f4e4cc; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-choice { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; width: 180px; min-height: 168px; padding: 12px 8px; background: none; border: 3px solid var(--ink); border-radius: 14px; font-size: 24px; font-weight: 700; color: var(--ink); cursor: pointer; } .ds-choice:active { background: var(--ink); color: var(--paper); } .ds-choice:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }"
     },
     {
       "name": "The Pass",
@@ -242,7 +257,7 @@
       "refersTo": "panel",
       "description": "The signature ticket: numbered rows, one amber row, tear line and notches.",
       "html": "<div class=\"ds-surround\"><div class=\"ds-pass\"><div class=\"ds-row ds-row-now\"><div class=\"ds-num\">1</div><div><div class=\"ds-name\">Game one</div><div class=\"ds-time\">5 min</div></div></div><div class=\"ds-row\"><div class=\"ds-num\">2</div><div><div class=\"ds-name\">Game two</div><div class=\"ds-time\">2.5 min</div></div></div><div class=\"ds-tear\"></div><div class=\"ds-stub\"></div></div></div>",
-      "css": ":host { --ink: #0e1b2c; --ink-soft: #33445a; --paper: #fff; --amber: #ffb000; --panel-tint: #e9edf2; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-surround { background: var(--ink); padding: 20px; } .ds-pass { background: var(--paper); color: var(--ink); border-radius: 20px; overflow: hidden; } .ds-row { display: flex; align-items: center; gap: 16px; min-height: 92px; padding: 8px 22px; border-top: 3px solid var(--ink); } .ds-row:first-child { border-top: 0; } .ds-row-now { background: var(--amber); } .ds-num { flex: none; display: grid; place-items: center; width: 48px; font-size: 52px; font-weight: 800; line-height: 1; } .ds-name { font-size: 31px; font-weight: 700; line-height: 1.2; } .ds-time { font-size: 23px; } .ds-tear { position: relative; height: 30px; padding-inline: 24px; background: radial-gradient(circle, var(--ink) 4px, transparent 4.5px) left center / 18px 30px round no-repeat; background-origin: content-box; background-clip: content-box; } .ds-tear::before, .ds-tear::after { content: ''; position: absolute; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--ink); } .ds-tear::before { left: -15px; } .ds-tear::after { right: -15px; } .ds-stub { height: 20px; }"
+      "css": ":host { --surround: #833510; --ink: #2e1508; --ink-soft: #5f4332; --paper: #fff7ea; --amber: #ffa914; --panel-tint: #f4e4cc; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-surround { background: var(--surround); padding: 20px; } .ds-pass { background: var(--paper); color: var(--ink); border-radius: 20px; overflow: hidden; } .ds-row { display: flex; align-items: center; gap: 16px; min-height: 92px; padding: 8px 22px; border-top: 3px solid var(--ink); } .ds-row:first-child { border-top: 0; } .ds-row-now { background: var(--amber); } .ds-num { flex: none; display: grid; place-items: center; width: 48px; font-size: 52px; font-weight: 800; line-height: 1; } .ds-name { font-size: 31px; font-weight: 700; line-height: 1.2; } .ds-time { font-size: 23px; } .ds-tear { position: relative; height: 30px; padding-inline: 24px; background: radial-gradient(circle, var(--ink) 4px, transparent 4.5px) left center / 18px 30px round no-repeat; background-origin: content-box; background-clip: content-box; } .ds-tear::before, .ds-tear::after { content: ''; position: absolute; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--ink); } .ds-tear::before { left: -15px; } .ds-tear::after { right: -15px; } .ds-stub { height: 20px; }"
     },
     {
       "name": "Demo Target",
@@ -250,14 +265,14 @@
       "refersTo": "spot",
       "description": "A 6px ink ring marks what to tap in a demo; the fill stays as it was.",
       "html": "<div class=\"ds-spots\"><div class=\"ds-spot\"></div><div class=\"ds-spot ds-target\"></div></div>",
-      "css": ":host { --ink: #0e1b2c; --ink-soft: #33445a; --paper: #fff; --amber: #ffb000; --panel-tint: #e9edf2; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-spots { display: flex; gap: 32px; padding: 16px; } .ds-spot { width: 80px; height: 80px; border: 4px solid var(--ink); border-radius: 50%; background: var(--panel-tint); } .ds-target { outline: 6px solid var(--ink); outline-offset: 5px; }"
+      "css": ":host { --surround: #833510; --ink: #2e1508; --ink-soft: #5f4332; --paper: #fff7ea; --amber: #ffa914; --panel-tint: #f4e4cc; font-family: 'Be Vietnam Pro', system-ui, sans-serif; font-variant-numeric: tabular-nums; } .ds-spots { display: flex; gap: 32px; padding: 16px; } .ds-spot { width: 80px; height: 80px; border: 4px solid var(--ink); border-radius: 50%; background: var(--panel-tint); } .ds-target { outline: 6px solid var(--ink); outline-offset: 5px; }"
     }
   ],
   "narrative": {
     "northStar": "The Day's Pass",
-    "overview": "One white ticket on a dark navy surround is the whole world. The pass is both home and map: she leaves it to play a game and returns to the same ticket with the next row lit. Everything else, from a game to a settings page to a warning, is the same white panel on the same navy, so nothing feels like going somewhere new.\n\nThe system borrows the structure of a boarding pass and a departure board: numbered rows, heavy dividing rules, tabular numerals, a perforated tear line with punched notches. It borrows no flight imagery or vocabulary. Density is deliberately low and the type is very large, because the only player needs larger text, has less steady hands and can't be expected to know app conventions. Hierarchy comes from size, weight and one lit row, never from decoration.\n\nGerman and Vietnamese copy is an unreviewed draft. No wording is recorded here as a standard, and layouts must hold up when strings change length.\n\n",
+    "overview": "One cream ticket on a burnt sienna surround is the whole world. The pass is both home and map: she leaves it to play a game and returns to the same ticket with the next row lit. Everything else, from a game to a settings page to a warning, is the same cream panel on the same sienna, so nothing feels like going somewhere new.\n\nThe system borrows the structure of a boarding pass and a departure board: numbered rows, heavy dividing rules, tabular numerals, a perforated tear line with punched notches. It borrows no flight imagery or vocabulary. Density is deliberately low and the type is very large, because the only player needs larger text, has less steady hands and can't be expected to know app conventions. Hierarchy comes from size, weight and one lit row, never from decoration.\n\nGerman and Vietnamese copy is an unreviewed draft. No wording is recorded here as a standard, and layouts must hold up when strings change length.\n\n",
     "keyCharacteristics": [
-      "One white panel on a navy surround, on every screen.",
+      "One cream panel on a sienna surround, on every screen.",
       "One amber row that says where she is today.",
       "Very large type, with 20 px as the floor.",
       "Controls that are unmistakably shapes, with generous targets and a visible press.",
@@ -270,13 +285,13 @@
         "section": "colors"
       },
       {
-        "name": "The No Amber On White Rule",
-        "body": "Amber never colours text, icons or rings directly on white (1.83:1). That is why focus rings switch to ink inside a panel.",
+        "name": "The No Amber On Cream Rule",
+        "body": "Amber never colours text, icons or rings directly on cream (1.81:1). That is why focus rings switch to ink inside a panel.",
         "section": "colors"
       },
       {
         "name": "The No Red Rule",
-        "body": "The system has no red and no alarm colour. A wrong answer is an ink cross, and nothing on her screens signals failure with colour.",
+        "body": "The system has no red and no alarm colour, and the warm palette stays brown-orange rather than drifting towards it. A wrong answer is an ink cross, and nothing on her screens signals failure with colour.",
         "section": "colors"
       },
       {
@@ -306,7 +321,7 @@
       }
     ],
     "dos": [
-      "Do put every screen on the navy surround in one white panel, with one obvious next action.",
+      "Do put every screen on the sienna surround in one cream panel, with one obvious next action.",
       "Do give every button a word. The exceptions are the game's own pieces (location spots, memory tiles), whose instruction is the prompt sentence, and numeral options, whose heading names them.",
       "Do make every new press state an inversion of the control, visible without fine eyesight.",
       "Do keep text at 20 px or larger and targets at 60 px or larger.",
@@ -315,7 +330,7 @@
       "Do let strings change: German and Vietnamese copy is an unreviewed draft, so test layout rather than fixing wording."
     ],
     "donts": [
-      "Don't use amber for selection, success, games, charts or emphasis, or directly on white.",
+      "Don't use amber for selection, success, games, charts or emphasis, or directly on cream.",
       "Don't use an icon alone as a navigation, confirm or settings control.",
       "Don't fill a demo target to highlight it. Fill means lit or selected.",
       "Don't add red, cast shadows, a fourth font weight or a second typeface.",

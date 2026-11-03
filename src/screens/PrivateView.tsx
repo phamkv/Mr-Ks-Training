@@ -50,15 +50,15 @@ function Trend({ points, unit, format }: { points: { date: string; score: number
         }}
         onPointerLeave={() => setActive(null)}
       >
-        <line x1={PAD.left} x2={W - PAD.right} y1={H - PAD.bottom} y2={H - PAD.bottom} stroke="#E9EDF2" strokeWidth="2" />
-        <line x1={PAD.left} x2={W - PAD.right} y1={PAD.top} y2={PAD.top} stroke="#E9EDF2" strokeWidth="2" />
+        <line x1={PAD.left} x2={W - PAD.right} y1={H - PAD.bottom} y2={H - PAD.bottom} stroke="var(--panel-tint)" strokeWidth="2" />
+        <line x1={PAD.left} x2={W - PAD.right} y1={PAD.top} y2={PAD.top} stroke="var(--panel-tint)" strokeWidth="2" />
         <text x={PAD.left - 8} y={PAD.top + 7} textAnchor="end">{Math.round(max)}</text>
         <text x={PAD.left - 8} y={H - PAD.bottom + 7} textAnchor="end">{Math.round(min)}</text>
         <text x={PAD.left} y={H - 8}>{format(points[0].date)}</text>
         {points.length > 1 && <text x={W - PAD.right} y={H - 8} textAnchor="end">{format(points[points.length - 1].date)}</text>}
-        {points.length > 1 && <path d={line} fill="none" stroke="#0E1B2C" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />}
-        <line x1={x(shown)} x2={x(shown)} y1={PAD.top} y2={H - PAD.bottom} stroke="#33445A" strokeWidth="1" strokeDasharray="3 4" />
-        <circle cx={x(shown)} cy={y(points[shown].score)} r="6" fill="#0E1B2C" stroke="#FFFFFF" strokeWidth="2" />
+        {points.length > 1 && <path d={line} fill="none" stroke="var(--ink)" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />}
+        <line x1={x(shown)} x2={x(shown)} y1={PAD.top} y2={H - PAD.bottom} stroke="var(--ink-soft)" strokeWidth="1" strokeDasharray="3 4" />
+        <circle cx={x(shown)} cy={y(points[shown].score)} r="6" fill="var(--ink)" stroke="var(--paper)" strokeWidth="2" />
       </svg>
     </>
   );
