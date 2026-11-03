@@ -8,7 +8,7 @@
 
 web
 
-An installable PWA. Her iPhone 17 Pro Max on the newest iOS, launched from the Home Screen, is the main device. It also runs in a normal browser.
+An installable PWA. Her iPhone 17 Pro Max on the newest iOS, launched from the Home Screen, is the main device. It also runs in a normal browser. Live at https://pcogni.vercel.app.
 
 ## Stack
 
@@ -44,7 +44,7 @@ Built for one person rather than a market. It has no paywall, leagues, streaks, 
 ## Capabilities and Constraints
 
 **Capabilities**
-- 6 games: speed (always first), memory grid, arrows, tap/don't tap, switch rule and Odd one out.
+- 5 games: speed (always first), memory grid, arrows, tap/don't tap and switch rule. A sixth, Odd one out, is planned but not built.
 - Each game adapts to hold her at about 80% correct, using a shared 3-down, 1-up staircase.
 - Each game has a demo and a practice round.
 - Her screens show only days played, minutes and new personal bests.
@@ -52,7 +52,7 @@ Built for one person rather than a market. It has no paywall, leagues, streaks, 
 - A new game is one module plus one registry entry, with no core changes.
 
 **Constraints**
-- No game needs typing. Odd one out doesn't rely on letters or grammar.
+- No game needs typing. Odd one out must not rely on letters or grammar.
 - No accounts, and no name, email or birth date is ever collected.
 - No notifications, analytics, ad SDKs or third-party scripts.
 - Normal use must stay within the Vercel Hobby and Neon free limits. Vercel Hobby also requires personal, non-commercial use.
@@ -74,9 +74,9 @@ Built for one person rather than a market. It has no paywall, leagues, streaks, 
 - Never imply the phone version reproduces the ACTIVE result. It is untested at this format and dose.
 - The private view must say it is not a health check, that scores vary for ordinary reasons, and that memory concerns belong with her doctor.
 
-**Languages:** Vietnamese is her daily language and gets tested and reviewed first. German and English also ship in full. Odd one out sets are written per language rather than translated. Native speakers review German and Vietnamese before release.
+**Languages:** Vietnamese is her daily language and gets tested and reviewed first. German and English also ship in full. Odd one out sets will be written per language rather than translated. Native speakers review German and Vietnamese before release. That review is still open, so the German and Vietnamese text is a draft.
 
-**Name:** Mr. K's Training is the product and Home Screen name. `pcogni` remains the repository and Neon project name. No logo or other brand assets exist yet.
+**Name:** Mr. K's Training is the product and Home Screen name. `pcogni` remains the repository and Neon project name. The Home Screen icon (`public/icon.svg`) is the only brand asset. The look is recorded in `DESIGN.md`.
 
 ## Evidence on Hand
 
@@ -84,7 +84,9 @@ Built for one person rather than a market. It has no paywall, leagues, streaks, 
 - `docs/agents/plans/2026-11-02-language-friendly-cognitive-game-pwa.md`: full scope, acceptance criteria and game specifications.
 - ACTIVE trial, as cited in the plan: only speed training with boosters was linked to fewer dementia diagnoses (HR 0.75, 95% CI 0.59–0.95). Without boosters the HR was 1.01, and memory and reasoning training showed no effect. The trial used group sessions of 60–75 minutes, not a phone.
 
-**Absent, and must not be fabricated:** norm data, efficacy results for this app, testimonials and user numbers. She hasn't played it yet, because no app code exists.
+**Status on 2026-11-03:** Phases 1 to 3 of the plan (the speed game, the daily set, backup and the private view) are built and deployed, and their automated tests pass. Phase 4 (Odd one out) hasn't started. The plan's checks on her iPhone and with her are still open, so nothing here is confirmed by her use yet.
+
+**Absent, and must not be fabricated:** norm data, efficacy results for this app, testimonials and user numbers.
 
 ## Product Principles
 
