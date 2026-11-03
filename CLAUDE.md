@@ -42,7 +42,7 @@ Vite proxies `/api` to the local API. `npm run preview` serves the production bu
 
 Ask the user before deploying or migrating: both affect production and her live data.
 
-There is no git remote, so a push doesn't deploy. Deploy from this machine with the CLI, using the token from the Keychain:
+Deploy from this machine with the CLI, using the token from the Keychain. The GitHub repo (`origin`, public) only holds the source:
 
 ```sh
 npm run typecheck && npm test && npm run build
